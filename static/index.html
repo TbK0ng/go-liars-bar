@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骗子酒吧 - 多人卡牌游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 登录/注册界面 -->
+        <div id="auth-screen" class="screen">
+            <div class="container">
+                <h1>骗子酒吧</h1>
+                <div class="auth-form">
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="text" id="username" placeholder="请输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" id="password" placeholder="请输入密码">
+                    </div>
+                    <div class="button-group">
+                        <button id="login-btn" class="btn primary">登录</button>
+                        <button id="register-btn" class="btn secondary">注册</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏大厅界面 -->
+        <div id="lobby-screen" class="screen hidden">
+            <div class="container">
+                <h1>游戏大厅</h1>
+                <div class="user-info">
+                    <span>欢迎, <span id="user-name"></span></span>
+                    <button id="logout-btn" class="btn small">登出</button>
+                </div>
+                <div class="lobby-actions">
+                    <button id="create-game-btn" class="btn primary">创建游戏</button>
+                    <div class="form-group">
+                        <input type="text" id="game-id-input" placeholder="输入游戏ID">
+                        <button id="join-game-btn" class="btn secondary">加入游戏</button>
+                    </div>
+                </div>
+                <div class="game-list">
+                    <h2>可用游戏</h2>
+                    <div id="games-container">
+                        <!-- 游戏列表将动态加载 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏界面 -->
+        <div id="game-screen" class="screen hidden">
+            <div class="game-container">
+                <div class="game-info">
+                    <div class="target-card-container">
+                        <h3>目标牌</h3>
+                        <div id="target-card" class="card">?</div>
+                    </div>
+                    <div class="game-status">
+                        <h3>游戏状态</h3>
+                        <div id="game-status-text">等待玩家加入...</div>
+                    </div>
+                    <button id="leave-game-btn" class="btn danger">离开游戏</button>
+                </div>
+
+                <div class="players-container">
+                    <div id="other-players" class="other-players">
+                        <!-- 其他玩家区域将动态加载 -->
+                    </div>
+                    <div id="current-player" class="current-player">
+                        <h3>你的手牌</h3>
+                        <div id="player-hand" class="player-hand">
+                            <!-- 玩家手牌将动态加载 -->
+                        </div>
+                        <div class="player-actions">
+                            <div id="play-cards-container" class="hidden">
+                                <h4>选择要出的牌</h4>
+                                <div id="selected-cards" class="selected-cards"></div>
+                                <button id="play-cards-btn" class="btn primary" disabled>出牌</button>
+                            </div>
+                            <div id="challenge-container" class="hidden">
+                                <h4>是否质疑?</h4>
+                                <div class="challenge-info">
+                                    <p>玩家 <span id="challenging-player"></span> 出了 <span id="card-count"></span> 张牌</p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="challenge-reason" placeholder="质疑理由(可选)">
+                                </div>
+                                <div class="button-group">
+                                    <button id="challenge-yes-btn" class="btn danger">质疑</button>
+                                    <button id="challenge-no-btn" class="btn secondary">不质疑</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-log">
+                    <h3>游戏日志</h3>
+                    <div id="log-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏结束界面 -->
+        <div id="game-over-screen" class="screen hidden">
+            <div class="container">
+                <h1>游戏结束</h1>
+                <div id="winner-info">
+                    <h2>胜利者: <span id="winner-name"></span></h2>
+                </div>
+                <button id="back-to-lobby-btn" class="btn primary">返回大厅</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/lobby.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
